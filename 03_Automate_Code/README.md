@@ -5,7 +5,7 @@ Stack: **Playwright Test + TypeScript**, Page Object Model, Chromium.
 
 - Test case design: [`../02_Testcase/TEST_CASES.xlsx`](../02_Testcase/TEST_CASES.xlsx) · [`../02_Testcase/TEST_CASES.md`](../02_Testcase/TEST_CASES.md)
 - Demo video: [`../01_Demo/REG-E2E-01-happy-path.mp4`](../01_Demo/REG-E2E-01-happy-path.mp4)
-- How to use + conclusion: [`../How_to_use_and_Conclusion.pdf`](../How_to_use_and_Conclusion.pdf)
+- How to use + conclusion: [`../Gofive_Automation_Exam_Submission.pdf`](../Gofive_Automation_Exam_Submission.pdf)
 - Target: https://portal.uat.gofive.co.th/Register/empeo
 
 ## Quick start
