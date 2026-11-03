@@ -1,0 +1,21 @@
+{
+  "name": "empeo-registration-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright automation suite for the empeo registration flow (Gofive Automation Tester Exam 1.0)",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui-only": "playwright test --grep-invert @e2e",
+    "test:e2e": "playwright test --grep @e2e",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:headed": "playwright test --headed --workers=1",
+    "test:demo": "RECORD_VIDEO=1 playwright test --headed --workers=1 --grep @smoke",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.10.2",
+    "typescript": "5.6.3"
+  }
+}

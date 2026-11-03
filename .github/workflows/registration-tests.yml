@@ -1,0 +1,49 @@
+name: empeo registration tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: 'Suite to run'
+        type: choice
+        options: [ui-only, full]
+        default: ui-only
+
+concurrency:
+  group: empeo-registration-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 03_Automate_Code
+    env:
+      CI: 'true'
+      TZ: Asia/Bangkok
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: 03_Automate_Code/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
+      - name: Run tests
+        run: |
+          if [ "${{ inputs.suite }}" = "full" ]; then npm test; else npm run test:ui-only; fi
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: |
+            03_Automate_Code/playwright-report/
+            03_Automate_Code/test-results/
+          retention-days: 14
